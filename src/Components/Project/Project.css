@@ -1,0 +1,66 @@
+.project-container {
+  padding-top: 100px;
+  min-height: 100vh;
+  background-color: #2A2A2A;
+  color: white;
+} 
+
+h1 {
+  font-family: "Audiowide", serif;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  justify-items: center;
+}
+
+.ProjectCard {
+  background-color: #D9D9D9;
+  width: 250px;
+  height: 400px;
+  box-shadow: 
+    0 8px 16px rgba(255, 255, 255, 0.1), /* Lighter shadow for contrast */
+    0 20px 40px rgba(255, 255, 255, 0.2); /* Stronger shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ProjectCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 12px 24px rgba(255, 255, 255, 0.066), /* Enhanced shadow on hover */
+    0 30px 60px rgba(255, 255, 255, 0.187);
+}
+
+.ProjectPic {
+  background-color: #636363; /* Default color */
+  width: 240px;
+  height: 210px;
+  margin: 0 auto;
+  transition: background-color 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+}
+
+.Progress {
+  background-color: #636363; /* Default color */
+  width: 100px;
+  height: 50px;
+  margin: 1rem auto;
+  text-align: center;
+  transition: background-color 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+}
+
+.ProjectCard:hover .ProjectPic,
+.ProjectCard:hover .Progress {
+  background-color: var(--hover-color, #636363); /* Use the hover color if defined */
+  opacity: 0.5; /* 50% opacity on hover */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}
