@@ -1,23 +1,23 @@
 .card-wrapper {
   display: inline-block;
   padding: 6px;
-  border: 4px solid #d3dbd1;
+  border: 4px solid var(--bg-secondary);
   border-radius: 28px;
-  background-color: #e5e7eb;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  background-color: var(--bg-tertiary);
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .card-wrapper:hover {
-  
-  transform: scale(1.1) rotate(5deg);
+  transform: scale(1.05) rotate(10deg);
   background-color: var(--hover-color); 
-  /* Use dynamic hover color */
 }
 
 .card {
   width: 120px;
   height: 135px;
-  background-color: #ffffff;
+  background-color: var(--card-bg);
   border-radius: 28px;
   position: relative;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -47,6 +47,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease;
 }
 
 .circle img {
@@ -72,9 +73,18 @@
   width: 100%;
 }
 
-.name {
+.skill_name {
   font-size: 14px;
   font-weight: 500;
-  color: #374151;
+  color: var(--text-primary);
   text-align: center;
+  transition: color 0.3s ease;
 }
+
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+

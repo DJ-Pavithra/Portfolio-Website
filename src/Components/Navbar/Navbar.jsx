@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import './Navbar.css'
 import logo from "../../assets/logo.png";
-
+import { useTheme } from '../../context/ThemeContext';
+import resume from '../../assets/pavithra-dj.pdf';
 const Navbar = () => {
+  const { isDarkMode, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -29,11 +31,13 @@ const Navbar = () => {
          <nav className="navbar">
             <Link to="/">Home</Link>
             <Link to="/project">Project</Link>
-            <a href='/assets/Pavithra Resume.pdf' download="Pavithra_Resume.pdf">Resume</a>
+            <a href={resume} download="pavithra-dj.pdf">Resume</a>
+            <button onClick={toggleTheme} className="theme-toggle">
+               {isDarkMode ? '☀️' : '🌙'}
+            </button>
             <Link to="/contact">
-            <button className="contact">Contact Me</button>
+               <button className="contact">Contact Me</button>
             </Link>
-            
          </nav>
     </header>
   )

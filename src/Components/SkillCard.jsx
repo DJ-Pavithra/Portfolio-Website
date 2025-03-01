@@ -11,7 +11,7 @@ const SkillCard = ({ name, imageUrl, hoverColor }) => {
           </div>
         </div>
         <div className="content">
-          <div className="name">{name}</div>
+          <div className="skill_name">{name}</div>
         </div>
       </div>
     </div>

@@ -1,10 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import Project from './Components/Project/Project';
 import SkillCard from './Components/SkillCard';
 import './App.css';
 import avatar from "./assets/avatar.png";
-import pic from "./assets/ReactGirl.svg";
+import pic from "./assets/About.svg";
 import c from './assets/c.png';
 import cpp from './assets/cpp.png';
 import java from './assets/java.png';
@@ -19,7 +20,13 @@ import anaconda from './assets/anaconda.png';
 import react from './assets/react.png';
 import aspnet from './assets/aspnet.png';
 import android from './assets/android.png';
-
+import Contact from './Contact';
+import { useTheme } from './context/ThemeContext';
+import { Linkedin, Github,Mail} from 'lucide-react';
+import particlesConfig from './particles-config';
+import Particles from 'react-tsparticles';
+import { loadSlim } from 'tsparticles-slim';
+import { FaGraduationCap, FaLaptopCode, FaBriefcase, FaCertificate } from 'react-icons/fa';
 const Home = () => {
   const skills = [
     { name: "C", hoverColor: "#f56c42", image: c },
@@ -40,13 +47,18 @@ const Home = () => {
     { name: "ASP.NET", hoverColor: "#f5c142", image: aspnet },
     { name: "Android SDK/Studio", hoverColor: "#f5a742", image: android},
   ];
+  const particlesInit = async (engine) => {
+    await loadSlim(engine);
+  };
 
   return (
+    
     <div className="split-container">
       <div className="split section1">
+        <Particles id="particles" init={particlesInit} options={particlesConfig}></Particles>
         <img src={avatar} alt="Profile" className="avatar" />
         <div className="content">
-          <div className="name-container">
+          <div className="name-content">
             <span className="name first">PAVITHRA</span>
             <span className="name last">DJ</span>
           </div>
@@ -55,16 +67,89 @@ const Home = () => {
             <hr />
             Driven to code, learn, and create impactful tech solutions.
           </div>
+          
         </div>
       </div>
 
-      <div className="split section2">
-        <img src={pic} alt="Illustration" className="pic" />
+ <div className="split section2">
+      <h2 className="section-title">About Me</h2>
+      
+      <div className="about-container">
+        <div className="profile-image-container">
+          <img src={pic} alt="Profile" className="pic" />
+          <div className="social-links">
+            <a href="https://github.com/DJ-Pavithra" className="social-icon" aria-label="GitHub">
+              <Github className="fab fa-github"></Github>
+            </a>
+            <a href="https://www.linkedin.com/in/pavithra-djanaguiraman-864097334/" className="social-icon" aria-label="LinkedIn">
+              <Linkedin className="fab fa-linkedin"></Linkedin>
+            </a>
+            <a href="mailto:djpavithra2005@gmail.com" className="social-icon" aria-label="Email">
+              <Mail className="fas fa-envelope"></Mail>
+            </a>
+          </div>
+        </div>
+        
         <div className="about">
-          I&apos;m a CSE student at<a href="https://www.ptuniv.edu.in" className="text-link" rel="noopener noreferrer">Puducherry Technological University</a>, and I love working on web applications and exploring UI/UX design. I&apos;ve picked up skills in React, ASP.NET, and Android development. Right now, I&apos;m focusing on building my skills and creating things that can make a difference in the tech world
+          <p className="about-text">
+            I'm a CSE student at <a href="https://www.ptuniv.edu.in" className="text-link" rel="noopener noreferrer">Puducherry Technological University</a>, 
+            passionate about web applications and UI/UX design. I've developed skills in React, ASP.NET, and Android development. 
+            Currently, I'm focused on enhancing my technical expertise and creating innovative solutions that can make a meaningful impact in the tech world.
+          </p>
+          
+          <div className="key-details">
+            <div className="detail-item">
+              <FaGraduationCap className="detail-icon" />
+              <div>
+                <h3>Education</h3>
+                <p>B.Tech in Computer Science & Engineering</p>
+                <p>Puducherry Technological University (2022-2026)</p>
+              </div>
+            </div>
+            
+            <div className="detail-item">
+              <FaLaptopCode className="detail-icon" />
+              <div>
+                <h3>Technical Skills</h3>
+                <div className="skills-container">
+                  <span className="skill-tag">React</span>
+                  <span className="skill-tag">ASP.NET</span>
+                  <span className="skill-tag">Android</span>
+                  <span className="skill-tag">JavaScript</span>
+                  <span className="skill-tag">UI/UX</span>
+                  <span className="skill-tag">HTML/CSS</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="detail-item">
+              <FaBriefcase className="detail-icon" />
+              <div>
+                <h3>Experience</h3>
+                <p>Web Development Intern - Atal Incubation Center(AICPEC)</p>
+              </div>
+            </div>
+            
+            <div className="detail-item">
+              <FaCertificate className="detail-icon" />
+              <div>
+                <h3>Certifications</h3>
+                <p>SQL Intermediate</p>
+                <p>Type Writing-Junior</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="personal-interests">
+            <h3>When I'm not coding...</h3>
+            <p>I enjoy Competitive programming (LeetCode, CodeChef),Board Games (like Carrom), exploring new tech. I'm also passionate about creating accessible digital experiences that solve real-world problems.</p>
+          </div>
+          
+          <a href="/resume.pdf" className="resume-button">Download Resume</a>
         </div>
       </div>
-
+    </div>
+      
       <div className="split section3">
         <div className="skills-container">
           <h2>SKILLS</h2>
@@ -97,25 +182,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="contact-container">
-            <h2>GET IN TOUCH</h2>
-            <form className="contact-form">
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name"  placeholder="Your name"  required />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="your@email.com" 
-                  required />
-              </div>
-              <div className="form-group">
-                <label htmlFor="message">Message</label>
-                <textarea id="message" name="message" rows="5"  placeholder="Your message" required></textarea>
-              </div>
-              <button type="submit" className="submit-button">Send</button>
-            </form>
-          </div>
+            <Contact/>
         </div>
       </div>
     </div>
@@ -123,8 +190,10 @@ const Home = () => {
 };
 
 const App = () => {
+  const { isDarkMode } = useTheme();
+
   return (
-    <div className="app-container">
+    <div className="app-container" data-theme={isDarkMode ? 'dark' : 'light'}>
       <Navbar />
       <Routes>
         <Route path="/" element={
