@@ -21,6 +21,7 @@ import react from './assets/react.png';
 import aspnet from './assets/aspnet.png';
 import android from './assets/android.png';
 import Contact from './Contact';
+import resume from "./assets/pavithra-dj.pdf";
 import { useTheme } from './context/ThemeContext';
 import { Linkedin, Github,Mail} from 'lucide-react';
 import particlesConfig from './particles-config';
@@ -145,7 +146,7 @@ const Home = () => {
             <p>I enjoy Competitive programming (LeetCode, CodeChef),Board Games (like Carrom), exploring new tech. I'm also passionate about creating accessible digital experiences that solve real-world problems.</p>
           </div>
           
-          <a href="/resume.pdf" className="resume-button">Download Resume</a>
+          <a href={resume} className="resume-button" download={"pavithra-dj.pdf"}>Download Resume</a>
         </div>
       </div>
     </div>
